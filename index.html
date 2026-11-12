@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sınav Eksik Analizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="kart">
+    <header>
+      <h1>Sınav Eksik Analizi</h1>
+      <p class="alt">Dersini seç, notunu gir, eksik konularını ve sıralamanı gör.</p>
+    </header>
+
+    <form id="form" novalidate>
+      <label for="ders">1. Ders</label>
+      <select id="ders" required>
+        <option value="">Ders seçin</option>
+      </select>
+
+      <label for="ad">2. Ad Soyad</label>
+      <input id="ad" type="text" placeholder="Örn. Ayşe Yılmaz" autocomplete="name" maxlength="60" required>
+
+      <label for="not">3. Sınav Notu</label>
+      <input id="not" type="number" min="0" step="1" placeholder="0 - 100" required>
+
+      <div class="uyari" role="note">
+        <strong>Dikkat:</strong> Notunu sınav kağıdındaki gibi doğru gir.
+        Hatalı not girenlerin kaydı sistemden devre dışı bırakılır.
+        Her derse yalnızca bir kez not girebilirsin.
+      </div>
+
+      <label class="onay">
+        <input id="onay" type="checkbox">
+        Girdiğim notun doğru olduğunu onaylıyorum.
+      </label>
+
+      <p class="kvkk">Ad soyadın yalnızca öğretim elemanı tarafından görülür. Sıralamada sadece baş harflerin gösterilir.</p>
+
+      <p id="hata" class="hata" role="alert"></p>
+      <button type="submit" id="gonder">Raporumu Göster</button>
+    </form>
+
+    <section id="rapor" hidden></section>
+  </main>
+
+  <section class="kart" id="ders-lig-kart" hidden>
+    <h2 id="ders-lig-baslik">Ders Ligi</h2>
+    <div id="ders-lig"></div>
+  </section>
+
+  <section class="kart" id="genel-kart">
+    <h2>Genel Başarı Sıralaması</h2>
+    <p class="alt kucuk">Tüm derslerdeki not ortalamasına göre.</p>
+    <div id="genel-lig"><p class="bos">Yükleniyor...</p></div>
+  </section>
+
+  <footer>Boğazlıyan MYO · Bilgisayar Teknolojileri Bölümü</footer>
+
+  <script src="config.js"></script>
+  <script src="dersler.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
