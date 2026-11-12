@@ -1,3 +1,1 @@
-// Apps Script "Web uygulaması" adresini buraya yapıştırın.
-// Boş bırakılırsa rapor çalışır ama notlar kaydedilmez ve sıralama görünmez.
-window.API_URL = "";
+window.API_URL = "https://script.google.com/macros/s/AKfycbx-ZhKi1ILHAXZxJd-r9wN3m-gCAJUql7TRwynYCmoagicLo_l2CUgomFc07PROlAPEXw/exec";
