@@ -108,13 +108,26 @@
     const eksik = sonuc.filter((k) => k.oran < 1);
     const iyi = sonuc.filter((k) => k.oran >= 1);
 
+    const BOLUMLER = [
+      ["bil", "📘 Bilmen gerekenler"],
+      ["calis", "🎯 Şunlara çalış"],
+      ["alistirma", "✍️ Alıştırma yap"],
+    ];
+    const tavsiye = (o) => {
+      if (!o) return "";
+      if (typeof o === "string") return `<p>${kacis(o)}</p>`;
+      return BOLUMLER.filter(([a]) => o[a] && o[a].length)
+        .map(([a, b]) => `<div class="tavsiye"><h4>${b}</h4><ul>${o[a].map((m) => `<li>${kacis(m)}</li>`).join("")}</ul></div>`)
+        .join("");
+    };
+
     const konuKart = (k) => {
       const s = seviye(k.oran);
       return `
         <div class="konu ${s.sinif}">
           <div class="konu-baslik"><span>${kacis(k.ad)}</span><span class="etiket">${s.metin}</span></div>
           <div class="cubuk"><span style="width:${Math.round(k.oran * 100)}%"></span></div>
-          ${k.oran < 1 && k.oneri ? `<p>${kacis(k.oneri)}</p>` : ""}
+          ${k.oran < 1 ? tavsiye(k.oneri) : ""}
         </div>`;
     };
 
